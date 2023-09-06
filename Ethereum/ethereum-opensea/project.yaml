@@ -1,0 +1,51 @@
+specVersion: "1.0.0"
+
+name: "ethereum-subql-starter"
+version: "0.0.1"
+runner:
+  node:
+    name: "@subql/node-ethereum"
+    version: "*"
+  query:
+    name: "@subql/query"
+    version: "*"
+description: "This project can be use as a starting point for developing your new Ethereum SubQuery project"
+repository: "https://github.com/subquery/ethereum-subql-starter"
+
+schema:
+  file: "./schema.graphql"
+
+network:
+  # chainId is the EVM Chain ID, for Ethereum this is 1
+  # https://chainlist.org/chain/1
+  chainId: "1"
+  endpoint: ["https://eth.llamarpc.com"]
+  # Recommended to provide the HTTP endpoint of a full chain dictionary to speed up processing
+  # dictionary: "https://gx.api.subquery.network/sq/subquery/eth-dictionary"
+
+dataSources:
+  - kind: ethereum/Runtime
+    startBlock: 18078876
+    options:
+      # Must be a key of assets
+      abi: seaport
+      address: "0x00000000000000ADc04C56Bf30aC9d3c0aAF14dC"
+    assets:
+      seaport:
+        file: "./abis/seaport.abi.json"
+    mapping:
+      file: "./dist/index.js"
+      handlers:
+        # - handler: handleTransaction
+        #   kind: ethereum/TransactionHandler
+        #   filter:
+        ## The function can either be the function fragment or signature
+        # function: '0x095ea7b3'
+        # function: '0x7ff36ab500000000000000000000000000000000000000000000000000000000'
+        # function: approve(address spender, uint256 rawAmount)
+        - handler: handleLog
+          kind: ethereum/LogHandler
+          filter:
+            topics:
+              # Follows standard log filters https://docs.ethers.io/v5/concepts/events/
+              # - OrderFulfilled()
