@@ -1,0 +1,53 @@
+name: New chain support request
+description: Adding a new chain
+title: "[Chain support request]: "
+labels: ["CHAIN_SUPPORT"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: Name of the network
+      placeholder: Ethereum Mainnet
+    validations:
+      required: true
+  - type: input
+    id: name-for-package
+    attributes:
+      label: Name for package
+      description: Name for package
+      placeholder: ethereum-mainnet
+    validations:
+      required: true
+  - type: input
+    id: chainId
+    attributes:
+      label: Chain Id
+      description: The ID of EVM chain
+      placeholder: 1
+    validations:
+      required: true
+  - type: input
+    id: endpoint
+    attributes:
+      label: Endpoint
+      description: Node Endpoint
+      placeholder: https://eth.api.onfinality.io/public
+    validations:
+      required: true
+  - type: input
+    id: startBlock
+    attributes:
+      label: Start Block
+      description: Block to start the indexing from
+      placeholder: 1
+    validations:
+      required: true
+  - type: input
+    id: contractAddress
+    attributes:
+      label: ERC20 contract address
+      description: Smart contract address of ERC20 asset
+      placeholder: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+    validations:
+      required: true
