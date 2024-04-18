@@ -24,7 +24,7 @@ body:
     attributes:
       label: Chain Id
       description: The ID of EVM chain
-      placeholder: 1
+      placeholder: "1"
     validations:
       required: true
   - type: input
@@ -40,7 +40,7 @@ body:
     attributes:
       label: Start Block
       description: Block to start the indexing from
-      placeholder: 1
+      placeholder: "1"
     validations:
       required: true
   - type: input
