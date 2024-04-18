@@ -4,7 +4,7 @@ jobs:
   issue_commented:
     # This job only runs for issue comments
     name: Issue comment
-    if: ${{ !github.event.issue.pull_request }} && github.event.comment.body == 'test' && contains(github.event.issue.labels.*.name, 'your_label')
+    if: ${{ !github.event.issue.pull_request }} && github.event.comment.body == 'test' && contains(github.event.issue.labels.*.name, 'CHAIN_SUPPORT')
     runs-on: ubuntu-latest
     steps:
       - run: |
